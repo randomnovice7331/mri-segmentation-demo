@@ -40,4 +40,53 @@
       images/800w/coronalHDBET.webp 800w,
       images/1200w/coronalHDBET.webp 1200w,
       images/1600w/coronalHDBET.webp 1600w"
-    sizes
+    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+    alt="Coronal head MRI with HD-BET brain mask overlay; slices ordered anterior to posterior." />
+  <figcaption>
+    Automatic brain extraction on coronal head-and-neck MRI using the HD-BET model.
+    Bottom row: original slices. Top row: the same slices with the intracranial brain mask overlay.
+    Slices are ordered anterior → posterior.
+  </figcaption>
+</figure>
+
+<hr/>
+
+<figure>
+  <img
+    src="images/1200w/MRIpanel.webp"
+    srcset="
+      images/400w/MRIpanel.webp 400w,
+      images/800w/MRIpanel.webp 800w,
+      images/1200w/MRIpanel.webp 1200w,
+      images/1600w/MRIpanel.webp 1600w"
+    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+    alt="Axial, coronal and sagittal MR images with nnU-Net segmentation." />
+  <figcaption>
+    Automated tumor segmentation on brain MRI using nnU-Net. Rows are ordered as:
+    axial superior→inferior, coronal anterior→posterior, sagittal left→right.
+    <b>ET</b> (red dashed), <b>NCR</b> (green dash-dot), <b>ED</b> (black triangles).
+    A 2 cm scale bar is shown in each panel.
+  </figcaption>
+</figure>
+
+<hr/>
+
+<figure>
+  <img
+    src="images/1200w/detailedView.webp"
+    srcset="
+      images/400w/detailedView.webp 400w,
+      images/800w/detailedView.webp 800w,
+      images/1200w/detailedView.webp 1200w,
+      images/1600w/detailedView.webp 1600w"
+    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+    alt="Panels A (axial), B (coronal), C (sagittal) with ET, NCR, ED and 2 cm scale bar." />
+  <figcaption>
+    Panels <b>A</b> (axial), <b>B</b> (coronal), <b>C</b> (sagittal) show the same lesion with
+    ET (red dashed), NCR (green dash-dot) and ED (black triangles). 2 cm scale bar in each panel.
+  </figcaption>
+  <small class="legend">Legend: ET = enhancing tumor; NCR = necrosis/non-enhancing core; ED = peritumoral edema.</small>
+</figure>
+
+</body>
+</html>
