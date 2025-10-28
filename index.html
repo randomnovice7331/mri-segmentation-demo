@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Automated brain MRI segmentation — demo</title>
+<style>
+  :root{color-scheme:light dark}
+  body{margin:0;background:#0b0b0b;color:#e7e7e7;
+       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;line-height:1.55}
+  main{max-width:1200px;margin:40px auto;padding:0 16px}
+  h1{text-align:center;margin:0 0 18px}
+  p.lead{text-align:center;opacity:.8;margin:0 0 28px}
+  figure{margin:36px auto}
+  img{display:block;width:100%;height:auto;border-radius:6px}
+  figcaption{font-size:.98rem;opacity:.9;margin-top:10px}
+  .divider{height:1px;background:#2a2a2a;margin:28px 0}
+  small.note{display:block;opacity:.7;margin-top:28px;text-align:center}
+</style>
+</head>
+<body>
+<main>
+  <h1>Automated brain MRI segmentation — demo</h1>
+  <p class="lead">Research demo — not for clinical decision-making.</p>
+
+  <!-- 1) HD-BET coronal montage -->
+  <figure>
+    <img
+      src="images/1200w/coronalHDBET.webp"
+      srcset="
+        images/400w/coronalHDBET.webp 400w,
+        images/800w/coronalHDBET.webp 800w,
+        images/1200w/coronalHDBET.webp 1200w,
+        images/1600w/coronalHDBET.webp 1600w"
+      sizes="(max-width: 700px) 100vw, 1200px"
+      alt="Coronal head MRI with HD-BET brain mask overlay; slices ordered anterior to posterior." />
+    <figcaption>
+      Automatic brain extraction on coronal head-and-neck MRI using the HD-BET model. Bottom row: original slices.
+      Top row: the same slices with the intracranial brain mask overlay. Slices are ordered anterior → posterior.
+    </figcaption>
+  </figure>
+
+  <div class="divider"></div>
+
+  <!-- 2) nnU-Net 3×7 montage -->
+  <figure>
+    <img
+      src="images/1200w/MRIpanel.webp"
+      srcset="
+        images/400w/MRIpanel.webp 400w,
+        images/800w/MRIpanel.webp 800w,
+        images/1200w/MRIpanel.webp 1200w,
+        images/1600w/MRIpanel.webp 1600w"
+      sizes="(max-width: 700px) 100vw, 1200px"
+      alt="Axial, coronal and sagittal MR images with nnU-Net segmentation: ET red dashed, NCR green dash-dot, ED black triangles; 2 cm scale bars." />
+    <figcaption>
+      Automated tumor segmentation on brain MRI using nnU-Net.
+      Rows: axial superior→inferior, coronal anterior→posterior, sagittal left→right.
+      <strong>ET</strong> (red dashed), <strong>NCR</strong> (green dash-dot), <strong>ED</strong> (black triangles).
+      A 2&nbsp;cm scale bar is shown in each panel.
+    </figcaption>
+  </figure>
+
+  <div class="divider"></div>
+
+  <!-- 3) Orthogonal triptych -->
+  <figure>
+    <img
+      src="images/1200w/detailedView.webp"
+      srcset="
+        images/400w/detailedView.webp 400w,
+        images/800w/detailedView.webp 800w,
+        images/1200w/detailedView.webp 1200w,
+        images/1600w/detailedView.webp 1600w"
+      sizes="(max-width: 700px) 100vw, 1200px"
+      alt="Panels A (axial), B (coronal), C (sagittal) with ET, NCR, ED and 2 cm scale bar." />
+    <figcaption>
+      Panels <strong>A</strong> (axial), <strong>B</strong> (coronal), <strong>C</strong> (sagittal)
+      show the same lesion with ET (red dashed), NCR (green dash-dot) and ED (black triangles).
+      2&nbsp;cm scale bar in each panel.
+    </figcaption>
+  </figure>
+
+  <small class="note">Legend: ET = enhancing tumor; NCR = necrosis/non-enhancing core; ED = peritumoral edema.</small>
+</main>
+</body>
+</html>
