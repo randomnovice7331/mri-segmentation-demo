@@ -8,19 +8,34 @@
     :root { --maxw: 1200px; }
     html,body{ margin:0; padding:0; }
     body{
-      background:#fff; color:#111; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+      background:#fff; color:#111;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
       line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
     header{ max-width:var(--maxw); margin:2.2rem auto 0; padding:0 1rem; text-align:center; }
     h1{ font-weight:800; letter-spacing:.2px; margin:.2rem 0 0; }
     .tag{ color:#666; font-size:.95rem; margin:.25rem 0 1.25rem; }
     hr{ border:none; border-top:1px solid #eee; margin:2rem auto; max-width:var(--maxw); }
-    figure{ max-width:var(--maxw); margin:1.5rem auto; padding:0 1rem; }
+    main{ max-width:var(--maxw); margin:0 auto; }
+    figure{ margin:1.5rem 0; padding:0 1rem; }
     img{ width:100%; height:auto; display:block; border-radius:4px; }
     figcaption{ color:#333; margin:.75rem 0 0; font-size:1.05rem; }
-    small.muted{ color:#666; display:block; text-align:center; margin:1.25rem 0 2rem; }
     b{ font-weight:700; }
-    .legend{ color:#666; font-size:.9rem; }
+    .legend{ color:#666; font-size:.9rem; text-align:center; margin:1rem 0 2rem; }
+
+    /* Volumes table */
+    h2{ font-size:1.35rem; margin:2.2rem 1rem .6rem; }
+    table{ width:calc(100% - 2rem); margin:0 1rem; border-collapse:collapse; font-variant-numeric: tabular-nums; }
+    thead th{ text-align:left; background:#fafafa; color:#222; border-bottom:1px solid #e8e8e8; padding:.6rem .7rem; }
+    tbody td{ padding:.55rem .7rem; border-bottom:1px solid #f0f0f0; }
+    tbody tr:last-child td{ border-bottom:none; }
+    td.num{ text-align:right; }
+    .note{ color:#666; font-size:.92rem; margin:.6rem 1rem 0; }
+
+    /* References */
+    ol.refs{ margin: .2rem 1.2rem 3rem; padding-left:1rem; }
+    ol.refs li{ margin:.4rem 0; }
+    small.muted{ color:#666; display:block; text-align:center; margin:1.25rem 0 2rem; }
   </style>
 </head>
 <body>
@@ -30,65 +45,105 @@
   <div class="tag">Research demo — not for clinical decision-making.</div>
 </header>
 
-<!-- 1) coronalHDBET -->
-<figure>
-  <img
-    src="images/1200w/coronalHDBET-1200w.webp"
-    srcset="
-      images/400w/coronalHDBET-400w.webp 400w,
-      images/800w/coronalHDBET-800w.webp 800w,
-      images/1200w/coronalHDBET-1200w.webp 1200w,
-      images/1600w/coronalHDBET-1600w.webp 1600w"
-    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
-    alt="Coronal head MRI with HD-BET brain mask overlay; slices ordered anterior to posterior." />
-  <figcaption>
-    Automatic brain extraction on coronal head-and-neck MRI using the HD-BET model.
-    Bottom row: original slices. Top row: the same slices with the intracranial brain mask overlay.
-    Slices are ordered anterior → posterior.
-  </figcaption>
-</figure>
+<main>
 
-<hr/>
+  <!-- 1) coronalHDBET -->
+  <figure>
+    <img
+      src="images/1200w/coronalHDBET-1200w.webp"
+      srcset="
+        images/400w/coronalHDBET-400w.webp 400w,
+        images/800w/coronalHDBET-800w.webp 800w,
+        images/1200w/coronalHDBET-1200w.webp 1200w,
+        images/1600w/coronalHDBET-1600w.webp 1600w"
+      sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+      alt="Coronal head-and-neck MRI with HD-BET brain mask overlay, ordered anterior to posterior." />
+    <figcaption>
+      Automatic selection of brain tissue on coronal head-and-neck MRI images, using the HD-BET model.
+      Bottom row: original slices. Top row: the same slices with the intracranial brain mask overlay.
+      Slices are ordered anterior → posterior.
+    </figcaption>
+  </figure>
 
-<!-- 2) MRIpanel -->
-<figure>
-  <img
-    src="images/1200w/MRIpanel-1200w.webp"
-    srcset="
-      images/400w/MRIpanel-400w.webp 400w,
-      images/800w/MRIpanel-800w.webp 800w,
-      images/1200w/MRIpanel-1200w.webp 1200w,
-      images/1600w/MRIpanel-1600w.webp 1600w"
-    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
-    alt="Axial, coronal and sagittal MR images with nnU-Net segmentation." />
-  <figcaption>
-    Automated tumor segmentation on brain MRI using nnU-Net. Rows are ordered as:
-    axial superior→inferior, coronal anterior→posterior, sagittal left→right.
-    <b>ET</b> (red dashed), <b>NCR</b> (green dash-dot), <b>ED</b> (black triangles).
-    A 2 cm scale bar is shown in each panel.
-  </figcaption>
-</figure>
+  <hr/>
 
-<hr/>
+  <!-- 2) MRIpanel -->
+  <figure>
+    <img
+      src="images/1200w/MRIpanel-1200w.webp"
+      srcset="
+        images/400w/MRIpanel-400w.webp 400w,
+        images/800w/MRIpanel-800w.webp 800w,
+        images/1200w/MRIpanel-1200w.webp 1200w,
+        images/1600w/MRIpanel-1600w.webp 1600w"
+      sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+      alt="Axial, coronal and sagittal MR images with nnU-Net segmentation." />
+    <figcaption>
+      A lesion in the left frontoparietal region is shown with central necrosis <b>NCR</b> (green dash-dot)
+      surrounded by enhancing tumor <b>ET</b> (red dashed) and peritumoral edema <b>ED</b>
+      (black triangle markers). Rows are ordered as: axial superior→inferior, coronal anterior→posterior,
+      sagittal left→right. A 2 cm scale bar is shown in each panel.
+    </figcaption>
+  </figure>
 
-<!-- 3) detailedView -->
-<figure>
-  <img
-    src="images/1200w/detailedView-1200w.webp"
-    srcset="
-      images/400w/detailedView-400w.webp 400w,
-      images/800w/detailedView-800w.webp 800w,
-      images/1200w/detailedView-1200w.webp 1200w,
-      images/1600w/detailedView-1600w.webp 1600w"
-    sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
-    alt="Panels A (axial), B (coronal), C (sagittal) with ET, NCR, ED and 2 cm scale bar." />
-  <figcaption>
-    Panels <b>A</b> (axial), <b>B</b> (coronal), <b>C</b> (sagittal) show the same lesion with
-    ET (red dashed), NCR (green dash-dot) and ED (black triangles). 2 cm scale bar in each panel.
-  </figcaption>
-  <small class="legend">Legend: ET = enhancing tumor; NCR = necrosis/non-enhancing core; ED = peritumoral edema.</small>
-</figure>
+  <hr/>
 
+  <!-- 3) detailedView -->
+  <figure>
+    <img
+      src="images/1200w/detailedView-1200w.webp"
+      srcset="
+        images/400w/detailedView-400w.webp 400w,
+        images/800w/detailedView-800w.webp 800w,
+        images/1200w/detailedView-1200w.webp 1200w,
+        images/1600w/detailedView-1600w.webp 1600w"
+      sizes="(max-width: 680px) 94vw, (max-width: 1280px) 92vw, 1200px"
+      alt="Panels A, B, C show the same lesion with ET, NCR, ED and a 2 cm scale bar." />
+    <figcaption>
+      Panels <b>A</b> (axial), <b>B</b> (coronal), <b>C</b> (sagittal) show the same lesion with
+      Enhancing tumor (red dashed), Necrosis (green dash-dot), and peritumoral edema (black triangles).
+      2 cm scale bar in each panel.
+    </figcaption>
+    <small class="legend">Legend: ET = enhancing tumor; NCR = necrosis/non-enhancing core; ED = peritumoral edema.</small>
+  </figure>
+
+  <!-- Volumes table -->
+  <h2>Region volumes</h2>
+  <table aria-describedby="vol-note">
+    <thead>
+      <tr><th>Region</th><th class="num">Volume (mL)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Brain volume (HD-BET)</td><td class="num">1433.2</td></tr>
+      <tr><td>Enhancing Tumor (ET)</td><td class="num">34.1</td></tr>
+      <tr><td>Edema (ED)</td><td class="num">67.7</td></tr>
+      <tr><td>Necrosis / Non-Enhancing (NCR)</td><td class="num">24.9</td></tr>
+      <tr><td>Bulk / Tumor Core (ET+NCR)</td><td class="num">59.0</td></tr>
+      <tr><td>Whole Tumor (WT = ET+ED+NCR)</td><td class="num">126.7</td></tr>
+    </tbody>
+  </table>
+  <div id="vol-note" class="note">
+    Volumes are computed from voxel counts and voxel spacing; values shown in milliliters (mL).
+  </div>
+
+  <!-- References -->
+  <h2>References</h2>
+  <ol class="refs">
+    <li>
+      Isensee F, Schell M, Tursunova I, Brugnara G, Bonekamp D, Neuberger U, Wick A,
+      Schlemmer HP, Heiland S, Wick W, Bendszus M, Maier-Hein KH, Kickingereder P.
+      <em>Automated brain extraction of multi-sequence MRI using artificial neural networks.</em>
+      arXiv:1901.11341, 2019.
+    </li>
+    <li>
+      Isensee F, Jaeger PF, Kohl SAA, Petersen J, Maier-Hein KH.
+      <em>nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation.</em>
+      <em>Nature Methods</em> 18(2):203-211, 2021.
+    </li>
+  </ol>
+
+  <small class="muted">© Research demo — for illustration only.</small>
+
+</main>
 </body>
 </html>
-
